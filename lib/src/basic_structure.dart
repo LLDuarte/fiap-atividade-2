@@ -15,14 +15,7 @@ class BasicStructure extends StatefulWidget {
 class _BasicStructureState extends State<BasicStructure> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _pages = <Widget>[
-    HomePage(),
-    MonteSuaPizza(),
-    Cardapio(),
-    Carrinho(),
-  ];
-
-  void _onItemTapped(int index) {
+  onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -30,13 +23,17 @@ class _BasicStructureState extends State<BasicStructure> {
 
   @override
   Widget build(BuildContext context) {
-    if(widget.page != null) _selectedIndex = widget.page!;
+    final List<Widget> pages = [
+      HomePage(monteSuaPizza: () => onItemTapped(1), cardapio: () => onItemTapped(2)),
+      MonteSuaPizza(notifyParent: () => onItemTapped(3)),
+      Cardapio(carrinho: () => onItemTapped(3)),
+      const Carrinho(),
+    ];
 
-    Widget retorno = Scaffold(
-      // appBar: const AppBarWidget(),
+    return Scaffold(
         extendBody: false,
         body: Center(
-          child:  _pages.elementAt(_selectedIndex),
+          child:  pages.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
@@ -58,17 +55,13 @@ class _BasicStructureState extends State<BasicStructure> {
             ),
           ],
           currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+          onTap: onItemTapped,
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black,
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
         )
     );
-
-    _selectedIndex = 0;
-
-    return retorno;
   }
 }
 

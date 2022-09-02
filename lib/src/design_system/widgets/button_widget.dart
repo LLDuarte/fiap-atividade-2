@@ -3,8 +3,9 @@ import '../colors.dart' as colors_globals;
 
 class ButtonWidget extends StatelessWidget {
   final String label;
+  final VoidCallback function;
 
-  const ButtonWidget(this.label, {Key? key}) : super(key: key);
+  const ButtonWidget({required this.label, required this.function, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class ButtonWidget extends StatelessWidget {
               primary: Colors.black,
               textStyle: const TextStyle(fontSize: 20),
             ),
-            onPressed: () {},
+            onPressed: function,
             child: Text(
               label,
               style: const TextStyle(

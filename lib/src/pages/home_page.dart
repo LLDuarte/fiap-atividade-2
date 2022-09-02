@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import '../design_system/colors.dart' as colors_globals;
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final VoidCallback monteSuaPizza;
+  final VoidCallback cardapio;
+
+  HomePage({Key? key, required this.monteSuaPizza, required this.cardapio}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +49,7 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const BasicStructure(page: 1)),
-                        );
-                      },
+                      onTap: () { monteSuaPizza(); },
                       child: Column(
                         children: const [
                           Text(
@@ -69,7 +67,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'O processo é simples, \nbasta adicionar os ingredientes \ne fechar o pedido!',
+                            'O processo é simples, \nbasta clicar aqui, adicionar os \n ingredientes e fechar o pedido!',
                             textAlign: TextAlign.justify,
                             style: TextStyle(fontSize: 8.0, fontFamily: 'Inter'),
                           ),
@@ -104,8 +102,8 @@ class HomePage extends StatelessWidget {
                         );
                       },
                       child: Column(
-                        children: const [
-                          Text(
+                        children: [
+                          const Text(
                             'CARDÁPIO',
                             textAlign: TextAlign.center,
                             style: TextStyle(
@@ -113,11 +111,14 @@ class HomePage extends StatelessWidget {
                               fontFamily: 'Inter',
                             ),
                           ),
-                          SizedBox(height: 10),
-                          Text(
-                            'Clique aqui e confira, \nnosso cardápio,com \nalgumas sugestões \nde pizzas para você!',
-                            textAlign: TextAlign.justify,
-                            style: TextStyle(fontSize: 10.0, fontFamily: 'Inter'),
+                          const SizedBox(height: 10),
+                          InkWell(
+                            onTap: () { cardapio(); },
+                            child: const Text(
+                              'Clique aqui e confira, \nnosso cardápio,com \nalgumas sugestões \nde pizzas para você!',
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(fontSize: 10.0, fontFamily: 'Inter'),
+                            ),
                           ),
                         ],
                       ),

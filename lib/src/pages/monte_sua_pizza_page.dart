@@ -1,3 +1,4 @@
+import 'package:atividade_2_fiap/src/basic_structure.dart';
 import 'package:atividade_2_fiap/src/design_system/widgets/button_widget.dart';
 import 'package:atividade_2_fiap/src/design_system/widgets/dropdown_widget.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,9 @@ import 'package:flutter/widgets.dart';
 import '../design_system/colors.dart' as colors_globals;
 
 class MonteSuaPizza extends StatelessWidget {
-  const MonteSuaPizza({Key? key}) : super(key: key);
+  final VoidCallback notifyParent;
+
+  MonteSuaPizza({Key? key, required this.notifyParent}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,7 @@ class MonteSuaPizza extends StatelessWidget {
           const Padding(
               padding: EdgeInsets.only(bottom: 30)
           ),
-          const ButtonWidget("CONCLUIR"),
+          ButtonWidget(label: "CONCLUIR", function: () {notifyParent();}),
           const Padding(
               padding: EdgeInsets.only(bottom: 30)),
         ],

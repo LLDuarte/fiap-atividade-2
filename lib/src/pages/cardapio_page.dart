@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import '../design_system/colors.dart' as colors_globals;
 
 class Cardapio extends StatelessWidget {
-  const Cardapio({Key? key}) : super(key: key);
+  final VoidCallback carrinho;
+
+  const Cardapio({Key? key, required this.carrinho}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +41,10 @@ class Cardapio extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               padding: EdgeInsets.all(15.0),
-              children: const [
-                CardCardapioWidget("PROMOÇÃO 1", "1 PIZZA E 1 COCA", "R\$ 80.00", 'lib/src/design_system/assets/images/cardapio_1.jpg'),
-                CardCardapioWidget("PROMOÇÃO 2", "1 PIZZA E 1 COCA", "R\$ 90.00", 'lib/src/design_system/assets/images/cardapio_2.png'),
-                CardCardapioWidget("PROMOÇÃO 3", "1 PIZZA E 1 COCA", "R\$ 50.99", 'lib/src/design_system/assets/images/cardapio_3.jpg'),
+              children: [
+                CardCardapioWidget("PROMOÇÃO 1", "1 PIZZA E 1 COCA", "R\$ 80.00", 'lib/src/design_system/assets/images/cardapio_1.jpg', carrinho: () {carrinho();}),
+                CardCardapioWidget("PROMOÇÃO 2", "1 PIZZA E 1 COCA", "R\$ 90.00", 'lib/src/design_system/assets/images/cardapio_2.png', carrinho: () {carrinho();}),
+                CardCardapioWidget("PROMOÇÃO 3", "1 PIZZA E 1 COCA", "R\$ 50.99", 'lib/src/design_system/assets/images/cardapio_3.jpg', carrinho: () {carrinho();}),
               ],
             ),
           ),

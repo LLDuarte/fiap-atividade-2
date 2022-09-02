@@ -1,3 +1,4 @@
+import 'package:atividade_2_fiap/src/basic_structure.dart';
 import 'package:atividade_2_fiap/src/design_system/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 import '../../design_system/colors.dart' as colors_globals;
@@ -7,8 +8,9 @@ class CardCardapioWidget extends StatelessWidget {
   final String description;
   final String preco;
   final String? url;
+  final VoidCallback carrinho;
 
-  const CardCardapioWidget(this.header, this.description, this.preco, this.url, {Key? key}) : super(key: key);
+  const CardCardapioWidget(this.header, this.description, this.preco, this.url, {required this.carrinho, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class CardCardapioWidget extends StatelessWidget {
           const Padding(
               padding: EdgeInsets.only(top: 10.0, bottom: 10.0)
           ),
-          ButtonWidget("Adicionar " + preco)
+          ButtonWidget(label: "Adicionar " + preco, function: () {carrinho();})
         ],
       ),
     );
