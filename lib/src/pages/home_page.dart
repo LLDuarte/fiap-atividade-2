@@ -45,12 +45,12 @@ class HomePage extends StatelessWidget {
                     child: Image.asset('lib/src/design_system/assets/images/home_1.jpg'),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    InkWell(
-                      onTap: () { monteSuaPizza(); },
-                      child: Column(
+                InkWell(
+                  onTap: () { monteSuaPizza(); },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
                         children: const [
                           Text(
                             'MONTE SUA \nPIZZA',
@@ -67,41 +67,36 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'O processo é simples, \nbasta clicar aqui, adicionar os \n ingredientes e fechar o pedido!',
+                            'O processo é simples,\n basta clicar aqui, \nadicionar os ingredientes \n e fechar o pedido!',
                             textAlign: TextAlign.justify,
-                            style: TextStyle(fontSize: 8.0, fontFamily: 'Inter'),
+                            style: TextStyle(fontSize: 12.0, fontFamily: 'Inter'),
                           ),
                         ],
                       ),
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Image.asset(
-                        'lib/src/design_system/assets/images/home_2.jpg',
-                        width: 260.0,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: Image.asset(
+                          'lib/src/design_system/assets/images/home_2.jpg',
+                          width: 220.0,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 80),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: Image.asset(
-                        'lib/src/design_system/assets/images/home_3.jpg',
-                        width: 160.0,
+                InkWell(
+                  onTap: () { cardapio(); },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0),
+                        child: Image.asset(
+                          'lib/src/design_system/assets/images/home_3.jpg',
+                          width: 160.0,
+                        ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const BasicStructure(page: 2)),
-                        );
-                      },
-                      child: Column(
+                      Column(
                         children: [
                           const Text(
                             'CARDÁPIO',
@@ -117,13 +112,13 @@ class HomePage extends StatelessWidget {
                             child: const Text(
                               'Clique aqui e confira, \nnosso cardápio,com \nalgumas sugestões \nde pizzas para você!',
                               textAlign: TextAlign.justify,
-                              style: TextStyle(fontSize: 10.0, fontFamily: 'Inter'),
+                              style: TextStyle(fontSize: 12.0, fontFamily: 'Inter'),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 50),
               ],
